@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="project2/project2.csproj" />
+  <Project Path="NoteSpace.Tests/NoteSpace.Tests.csproj" />
+</Solution>

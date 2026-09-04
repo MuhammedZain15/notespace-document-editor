@@ -1,0 +1,15 @@
+@model project2.Models.Doc
+@{
+    ViewData["Title"] = "Delete document";
+}
+
+<div class="delete-card">
+    <span class="eyebrow text-danger">DELETE DOCUMENT</span>
+    <h1>Delete “@Model.Title”?</h1>
+    <p>This action cannot be undone. The document and its content will be permanently removed.</p>
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <input type="hidden" asp-for="Id" />
+        <a class="btn btn-outline-secondary" asp-action="Index">Keep document</a>
+        <button type="submit" class="btn btn-danger">Delete permanently</button>
+    </form>
+</div>

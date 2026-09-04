@@ -1,0 +1,53 @@
+@model IEnumerable<project2.Models.Doc>
+@{
+    ViewData["Title"] = "My documents";
+}
+
+<section class="page-heading">
+    <div>
+        <span class="eyebrow">PERSONAL WORKSPACE</span>
+        <h1>My documents</h1>
+        <p>Create, find, and continue your private notes.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" asp-action="Create">+ New document</a>
+</section>
+
+@if (TempData["Success"] is string message)
+{
+    <div class="alert alert-success" role="alert">@message</div>
+}
+
+<form method="get" class="search-bar">
+    <input class="form-control" type="search" name="search" value="@ViewData["Search"]" placeholder="Search by title..." />
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+
+@if (!Model.Any())
+{
+    <div class="empty-state">
+        <div class="empty-icon">✦</div>
+        <h2>No documents yet</h2>
+        <p>Your ideas deserve a place. Create your first document to get started.</p>
+        <a class="btn btn-primary" asp-action="Create">Create a document</a>
+    </div>
+}
+else
+{
+    <div class="document-grid">
+        @foreach (var item in Model)
+        {
+            <article class="document-card">
+                <a class="document-preview" asp-action="Edit" asp-route-id="@item.Id" aria-label="Edit @item.Title">
+                    <span>DOC</span>
+                </a>
+                <div class="document-meta">
+                    <h2>@item.Title</h2>
+                    <div class="document-actions">
+                        <a asp-action="Edit" asp-route-id="@item.Id">Open</a>
+                        <a class="text-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                </div>
+            </article>
+        }
+    </div>
+}

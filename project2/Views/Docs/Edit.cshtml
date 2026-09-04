@@ -1,0 +1,30 @@
+@model project2.ViewModels.DocumentInputViewModel
+@{
+    ViewData["Title"] = "Edit document";
+}
+
+<div class="editor-shell">
+    <div class="editor-heading">
+        <div>
+            <span class="eyebrow">EDITING</span>
+            <h1>@Model.Title</h1>
+        </div>
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    </div>
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control form-control-lg mb-3" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+        <label asp-for="Content" class="form-label mt-3"></label>
+        <textarea id="tiny" asp-for="Content"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+        <div class="editor-footer">
+            <a class="btn btn-link" asp-action="Index">Back to documents</a>
+            <button type="submit" class="btn btn-primary px-4">Save changes</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
