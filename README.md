@@ -53,6 +53,12 @@ project2/
 
 Prerequisites: .NET 10 SDK and SQL Server LocalDB (or another SQL Server instance).
 
+### Windows: one-click start
+
+Clone or download the repository, then double-click `run.cmd` in the repository root. It restores the application, starts it over HTTP, and opens the sign-in page automatically.
+
+### Terminal
+
 ```bash
 git clone https://github.com/MuhammedZain15/notespace-document-editor.git
 cd notespace-document-editor/project2
@@ -63,6 +69,14 @@ dotnet run
 The database is created and migrated automatically on startup. To use another SQL Server, override `ConnectionStrings__DefaultConnection` or edit `project2/appsettings.json`.
 
 Open the HTTPS URL printed in the terminal, register an account, and create your first document. The health endpoint is available at `/health`.
+
+> If Visual Studio asks for a startup project, right-click the `project2` web project (not `NoteSpace.Tests`) and choose **Set as Startup Project**.
+
+## Troubleshooting
+
+- **Couldn't find a project to run:** run `run.cmd`, or pass `--project project2/project2.csproj` from the repository root.
+- **SQL connection error:** install the SQL Server Express LocalDB component, or replace `ConnectionStrings:DefaultConnection` with your SQL Server connection string.
+- **Port already in use:** stop the process using port `5123`, or change the `http` URL in `Properties/launchSettings.json`.
 
 ## Portfolio talking points
 
