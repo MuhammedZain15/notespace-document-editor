@@ -12,8 +12,7 @@ NoteSpace is a secure, responsive personal writing workspace built with ASP.NET 
 - Anti-forgery protection and validated view models
 - Async Entity Framework Core queries and SQL Server persistence
 - Responsive custom interface with empty and success states
-- Health check and GitHub Actions build workflow
-- Automated view-model validation tests with xUnit
+- Health check endpoint
 
 ## Tech stack
 
@@ -70,7 +69,7 @@ The database is created and migrated automatically on startup. To use another SQ
 
 Open the HTTPS URL printed in the terminal, register an account, and create your first document. The health endpoint is available at `/health`.
 
-> If Visual Studio asks for a startup project, right-click the `project2` web project (not `NoteSpace.Tests`) and choose **Set as Startup Project**.
+> If Visual Studio asks for a startup project, right-click the `project2` web project and choose **Set as Startup Project**.
 
 ## Troubleshooting
 
@@ -91,7 +90,6 @@ Open the HTTPS URL printed in the terminal, register an account, and create your
 - Document autosave and revision history
 - Tags, folders, and sharing permissions
 - File export to PDF and DOCX
-- Integration tests for authenticated document workflows
 - Configurable TinyMCE API key through user secrets
 
 ## License
