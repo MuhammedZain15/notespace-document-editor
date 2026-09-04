@@ -54,7 +54,7 @@ project2/
 Prerequisites: .NET 10 SDK and SQL Server LocalDB (or another SQL Server instance).
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/MuhammedZain15/notespace-document-editor.git
 cd notespace-document-editor/project2
 dotnet restore
 dotnet run
