@@ -10,7 +10,7 @@ NoteSpace is a secure, responsive personal writing workspace built with ASP.NET 
 - Rich-text editing powered by TinyMCE
 - Create, search, edit, and delete workflows
 - Anti-forgery protection and validated view models
-- Async Entity Framework Core queries and SQL Server persistence
+- Async Entity Framework Core queries and zero-configuration SQLite persistence
 - Responsive custom interface with empty and success states
 - Health check endpoint
 
@@ -20,7 +20,7 @@ NoteSpace is a secure, responsive personal writing workspace built with ASP.NET 
 - Razor Views and Bootstrap
 - ASP.NET Core Identity
 - Entity Framework Core 10
-- SQL Server / SQL Server LocalDB
+- SQLite
 - TinyMCE rich-text editor
 
 ## Security design
@@ -41,7 +41,6 @@ project2/
 ├── Areas/Identity/    Identity UI pages
 ├── Controllers/       Document and home workflows
 ├── Data/              Entity Framework Core context
-├── Migrations/        Database schema history
 ├── Models/            Persistent entities
 ├── ViewModels/        Validated form input models
 ├── Views/             Razor UI
@@ -50,7 +49,7 @@ project2/
 
 ## Run locally
 
-Prerequisites: .NET 10 SDK and SQL Server LocalDB (or another SQL Server instance).
+Prerequisite: .NET 10 SDK. No database server or extra setup is required.
 
 ### Windows: one-click start
 
@@ -65,16 +64,16 @@ dotnet restore
 dotnet run
 ```
 
-The database is created and migrated automatically on startup. To use another SQL Server, override `ConnectionStrings__DefaultConnection` or edit `project2/appsettings.json`.
+The application creates a local `notespace.db` file automatically on first startup.
 
-Open the HTTPS URL printed in the terminal, register an account, and create your first document. The health endpoint is available at `/health`.
+Open the URL printed in the terminal, register an account, and create your first document. The health endpoint is available at `/health`.
 
 > If Visual Studio asks for a startup project, right-click the `project2` web project and choose **Set as Startup Project**.
 
 ## Troubleshooting
 
 - **Couldn't find a project to run:** run `run.cmd`, or pass `--project project2/project2.csproj` from the repository root.
-- **SQL connection error:** install the SQL Server Express LocalDB component, or replace `ConnectionStrings:DefaultConnection` with your SQL Server connection string.
+- **Database file error:** ensure the project folder is writable. During development, deleting `project2/notespace.db` recreates a fresh database on the next run.
 - **Port already in use:** stop the process using port `5123`, or change the `http` URL in `Properties/launchSettings.json`.
 
 ## Portfolio talking points
