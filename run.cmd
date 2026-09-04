@@ -14,6 +14,7 @@ echo Starting NoteSpace...
 echo The app will open at http://localhost:5123
 dotnet restore "project2\project2.csproj"
 if errorlevel 1 goto :failed
+start "" /b powershell.exe -NoProfile -WindowStyle Hidden -Command "Start-Sleep -Seconds 3; Start-Process 'http://localhost:5123'"
 dotnet run --project "project2\project2.csproj" --launch-profile http --no-restore
 exit /b %errorlevel%
 
